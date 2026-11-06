@@ -390,7 +390,7 @@ def render_campaign_table(
             "Audience": campaign.audience,
             "Start": campaign.start_date,
             "End": campaign.end_date,
-            "Budget": f"\${campaign.budget:,.2f}",
+            "Budget": f"${campaign.budget:,.2f}",
             "Objective": campaign.objective,
         }
         for campaign in filtered_campaigns
@@ -470,7 +470,7 @@ def main() -> None:
         """
         <div class="hero">
             <div class="eyebrow">Campaign operations</div>
-            <div class="hero h1">Campaign workspace</div>
+            <h1>Campaign workspace</h1>
             <p>Plan, review and keep every campaign input in one calm, searchable place.</p>
         </div>
         """,
@@ -484,7 +484,7 @@ def main() -> None:
     metrics[0].metric("Total campaigns", len(campaigns))
     metrics[1].metric("Active", active_count)
     metrics[2].metric("Planned", planned_count)
-    metrics[3].metric("Total budget", f"\${total_budget:,.0f}")
+    metrics[3].metric("Total budget", f"${total_budget:,.0f}")
 
     list_tab, add_tab = st.tabs(["Campaign list", "Add campaign"])
     with list_tab:
