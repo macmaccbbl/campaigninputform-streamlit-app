@@ -10,13 +10,13 @@ A focused Streamlit workspace for planning, reviewing, and maintaining a campaig
 - Status and channel filters plus useful sorting options.
 - In-place campaign editing and deletion from the campaign list.
 - Portable CSV and JSON import/export from the sidebar.
-- A small, integration-friendly data model in \`campaign_store.py\`, keeping storage concerns separate from the UI.
+- A small, integration-friendly data model in `campaign_store.py`, keeping storage concerns separate from the UI.
 
 The app currently stores data in the Streamlit session, so a refresh starts a new list. CSV and JSON import/export provide a simple handoff while a database or API integration is added later.
 
 ## Run locally
 
-Prerequisite: install \`uv\`.
+Prerequisite: install `uv`.
 
     uv sync
     uv run streamlit run streamlit_app.py
@@ -27,6 +27,6 @@ Prerequisite: install \`uv\`.
 
 ## Project structure
 
-- \`streamlit_app.py\` — Streamlit presentation layer and user interactions.
-- \`campaign_store.py\` — Campaign schema, validation, and CSV/JSON serializers.
-- \`tests/\` — Standard-library unit tests for the campaign data layer.
+- `streamlit_app.py` — Streamlit presentation layer and user interactions.
+- `campaign_store.py` — Campaign schema, validation, and CSV/JSON serializers.
+- `tests/` — Standard-library unit tests for the campaign data layer.
