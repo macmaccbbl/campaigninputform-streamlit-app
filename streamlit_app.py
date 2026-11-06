@@ -103,6 +103,8 @@ def initialise_state() -> None:
         st.session_state.selected_campaign_id = ""
     if "flash_message" not in st.session_state:
         st.session_state.flash_message = ""
+    if "add_form_version" not in st.session_state:
+        st.session_state.add_form_version = 0
 
 
 def campaign_label(campaign: Campaign) -> str:
@@ -237,7 +239,7 @@ def render_campaign_form(
     current = campaign.to_dict() if campaign else {}
     today = date.today()
 
-    with st.form(form_key, clear_on_submit=not editing):
+    with st.form(form_key, clear_on_submit=False):
         st.markdown(
             f'<div class="section-label">{"Edit campaign" if editing else "New campaign"}</div>',
             unsafe_allow_html=True,
@@ -356,6 +358,7 @@ def render_campaign_form(
         message = f"Updated “{saved_campaign.name}”."
     else:
         st.session_state.campaigns.append(saved_campaign)
+        st.session_state.add_form_version += 1
         message = f"Added “{saved_campaign.name}”."
 
     st.session_state.selected_campaign_id = saved_campaign.id
@@ -490,7 +493,9 @@ def main() -> None:
     with list_tab:
         render_campaign_table(campaigns, filtered_campaigns)
     with add_tab:
-        render_campaign_form(form_key="add_campaign")
+        render_campaign_form(
+            form_key=f"add_campaign_{st.session_state.add_form_version}"
+        )
 
 
 if __name__ == "__main__":
